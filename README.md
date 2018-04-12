@@ -1,6 +1,6 @@
 # KerSYNC
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)<br>
 [![forthebadge](http://forthebadge.com/badges/made-with-crayons.svg)](http://forthebadge.com)
 
 
