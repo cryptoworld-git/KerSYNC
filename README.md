@@ -7,7 +7,7 @@ Would you like to setup a Web server to serve the mirror content? (Y/N)
 
 # Usage
 Log into your server via ssh and download the raw kersync.sh script and then execute it.<br>
-- `wget https://raw.githubusercontent.com/beardlyness/kernel.is/master/kersync.sh`<br>
+- `wget https://raw.githubusercontent.com/beardlyness/KerSYNC/master/kersync.sh`<br>
 - `bash kersync.sh`
 
 # Notes
