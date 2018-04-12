@@ -1,4 +1,9 @@
 # KerSYNC
+
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![forthebadge](http://forthebadge.com/badges/made-with-crayons.svg)](http://forthebadge.com)
+
+
 Making it easier to setup rsync, and setup a duplicate mirror of the kernel.org repository.
 
 # Options
