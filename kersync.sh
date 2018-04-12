@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #===============================================================================================================================================
-# (C) Copyright 2018 Kersync a project under the CryptoWorld Foundation (https://cryptoworld.is).
+# (C) Copyright 2018 KerSYNC a project under the Crypto World Foundation (https://cryptoworld.is).
 #
 # Licensed under the GNU GENERAL PUBLIC LICENSE, Version 3.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 #===============================================================================================================================================
-# title            :Kersync
+# title            :KerSYNC
 # description      :This script will make it super easy to rsync the kernel.org mirror.
 # author           :The CryptoWorld Foundation.
 # contributors     :Beardlyness
