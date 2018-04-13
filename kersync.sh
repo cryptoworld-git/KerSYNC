@@ -17,7 +17,7 @@
 #===============================================================================================================================================
 # title            :KerSYNC
 # description      :This script will make it super easy to rsync the kernel.org mirror.
-# author           :The CryptoWorld Foundation.
+# author           :The Crypto World Foundation.
 # contributors     :Beardlyness
 # date             :04-12-2018
 # version          :0.1.1 Beta
