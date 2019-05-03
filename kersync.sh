@@ -19,8 +19,8 @@
 # description      :This script will make it super easy to rsync the kernel.org mirror.
 # author           :The Crypto World Foundation.
 # contributors     :Beardlyness
-# date             :04-08-2019
-# version          :0.1.2 Beta
+# date             :05-03-2019
+# version          :0.1.3 Beta
 # os               :Debian/Ubuntu
 # usage            :bash kersync.sh
 # notes            :If you have any problems feel free to email the maintainer: beard [AT] cryptoworld [DOT] is
@@ -43,37 +43,19 @@
 #START
 
 # Checking for multiple "required" pieces of software.
-    if
-      echo -e "\033[92mPerforming upkeep of system packages..\e[0m"
-        upkeep
+    tools=( lsb-release wget curl dialog rsync dirmngr apt-transport-https ca-certificates )
+     grab_eware=""
+       for e in "${tools[@]}"; do
+         if command -v "$e" >/dev/null 2>&1; then
+           echo "Dependency $e is installed.."
+         else
+           echo "Dependency $e is not installed..?"
+            upkeep
+            grab_eware="$grab_eware $e"
+         fi
+       done
+      apt-get install $grab_eware
 
-      echo -e "\033[92mChecking software list..\e[0m"
-    [ ! -x  /usr/bin/lsb_release ] || [ ! -x  /usr/bin/rsync ] || [ ! -x  /usr/bin/apt-transport-https ] || [ ! -x  /usr/bin/dirmngr ] || [ ! -x  /usr/bin/ca-certificates ] ; then
-
-      echo -e "\033[92mlsb_release: checking for software..\e[0m"
-      echo -e "\033[34mInstalling lsb_release, Please Wait...\e[0m"
-      apt-get install lsb-release
-
-      echo -e "\033[92mwget: checking for software..\e[0m"
-      echo -e "\033[34mInstalling wget, Please Wait...\e[0m"
-      apt-get install wget
-
-      echo -e "\033[92mrsync: checking for software..\e[0m"
-      echo -e "\033[34mInstalling rsync, Please Wait...\e[0m"
-      apt-get install rsync
-
-      echo -e "\033[92mapt-transport-https: checking for software..\e[0m"
-      echo -e "\033[34mInstalling apt-transport-https, Please Wait...\e[0m"
-      apt-get install apt-transport-https
-
-      echo -e "\033[92mdirmngr: checking for software..\e[0m"
-      echo -e "\033[34mInstalling dirmngr, Please Wait...\e[0m"
-      apt-get install dirmngr
-
-      echo -e "\033[92mca-certificates: checking for software..\e[0m"
-      echo -e "\033[34mInstalling ca-certificates, Please Wait...\e[0m"
-      apt-get install ca-certificates
-  fi
 
 # RSYNC Arg main
   read -r -p "Do you want to setup RSYNC mirror for kernels? (Y/N) " REPLY
