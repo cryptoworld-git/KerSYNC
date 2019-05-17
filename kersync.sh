@@ -19,8 +19,8 @@
 # description      :This script will make it super easy to rsync the kernel.org mirror.
 # author           :The Crypto World Foundation.
 # contributors     :Beardlyness
-# date             :05-03-2019
-# version          :0.1.3 Beta
+# date             :05-17-2019
+# version          :0.1.4 Beta
 # os               :Debian/Ubuntu
 # usage            :bash kersync.sh
 # notes            :If you have any problems feel free to email the maintainer: beard [AT] cryptoworld [DOT] is
@@ -32,6 +32,10 @@
     exit 1
   fi
 
+  # Global Paths for Project Web Directory, and Projects RSYNC Path.
+  P_WEB_DIR="/var/www/html/mirror/live"
+  P_RSYNC_PATH="rsync://rsync.kernel.org/pub/"
+
 # Setting up an update/upgrade global function
   function upkeep() {
     echo "Performing Upkeep.."
@@ -40,10 +44,15 @@
       apt-get clean -y
   }
 
+  function cronjob_setup() {
+      echo "Setting up the Cronjobs for this script.."
+        crontab -e
+  }
+
 #START
 
 # Checking for multiple "required" pieces of software.
-    tools=( lsb-release wget curl dialog rsync dirmngr apt-transport-https ca-certificates )
+    tools=( rsync dirmngr apt-transport-https ca-certificates )
      grab_eware=""
        for e in "${tools[@]}"; do
          if command -v "$e" >/dev/null 2>&1; then
@@ -58,12 +67,13 @@
 
 
 # RSYNC Arg main
-  read -r -p "Do you want to setup RSYNC mirror for kernels? (Y/N) " REPLY
+  read -r -p "Do you want to setup an RSYNC Mirror for the Linux kernel's? (Y/Yes | N/No) " REPLY
     case "${REPLY,,}" in
       [yY]|[yY][eE][sS])
+            cronjob_setup
           echo "Setting up RSYNC paths, and getting RSYNC ready."
-            mkdir -p /var/www/html/mirror/live
-            rsync -av rsync://rsync.kernel.org/pub/ /var/www/html/mirror/live/
+            mkdir -p "$P_WEB_DIR"
+            rsync -av "$P_RSYNC_PATH" "$P_WEB_DIR"
         ;;
       [nN]|[nN][oO])
             echo "You have said no? We cannot work without your permission!"
